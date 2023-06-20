@@ -37,8 +37,8 @@ export class CrearVuelosComponent {
     }
 
     Swal.fire({
-      title: 'Creacion de Producto',
-      text: "¿Desea crear el producto?",
+      title: 'Creacion de Vuelo',
+      text: "¿Desea crear el vuelo?",
       icon: 'info',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

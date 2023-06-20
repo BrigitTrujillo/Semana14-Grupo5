@@ -9,7 +9,7 @@ import 'jspdf-autotable';
   providedIn: 'root'
 })
 export class AvionService {
-  url = 'http://localhost:4000/api/productos/';
+  url = 'http://localhost:4000/api/aviones/';
 
   constructor(private http: HttpClient) { }
 

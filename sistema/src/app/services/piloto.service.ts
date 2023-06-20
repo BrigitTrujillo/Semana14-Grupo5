@@ -9,7 +9,7 @@ import 'jspdf-autotable';
   providedIn: 'root'
 })
 export class PilotoService {
-  url = 'http://localhost:4000/api/productos/';
+  url = 'http://localhost:4000/api/pilotos/';
 
   constructor(private http: HttpClient) { }
 
