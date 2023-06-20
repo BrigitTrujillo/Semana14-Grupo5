@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.autotable.min.css">
+
+<section class="content">
+<div class="container-fluid">
+    <div class="row m-t-sm">
+        <div class="col-md-15">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="col-md-12 col-sm-12" id="list_alumnos">
+                        <div class="panel panel-filled">
+                            <div class="panel-body">
+
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <h5 class="m-t-xs">Pilotos Registrados</h5>
+                                    </div>
+                                    <div class="col-sm-2 text-right">
+                                        <div class="panel-body buttons-margin">
+                                            <a id="btnNuevo" class="btn btn-w-md btn-info"
+                                                routerLink="/crear-pilotos">Nuevo Piloto +</a>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table *ngIf="listPilotos.length > 0" class="table table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Codigo</th>
+                                                <th>Nombre</th>
+                                                <th>Horas de Vuelo</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="datos">
+                                            <tr *ngFor="let piloto of listPilotos">
+                                                <td>{{ piloto.codigo }}</td>
+                                                <td>{{ piloto.nombre }}</td>
+                                                <td>{{ piloto.hora_vuelo }}</td>
+                              
+                                                <td>
+                                                    <i (click)="eliminarPiloto(piloto._id)" style="font-size: 25px;" class="pe pe-7s-trash text-accent"></i>&nbsp;&nbsp;
+                                                    <i [routerLink]="['/editar-piloto', piloto._id]" style="font-size: 25px;" class="pe pe-7s-pen text-accent"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+                                
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>

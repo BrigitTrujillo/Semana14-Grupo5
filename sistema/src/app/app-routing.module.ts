@@ -1,26 +1,52 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CrearProductosComponent } from './pages/productos/crear-productos/crear-productos.component';
-import { EditarProductosComponent } from './pages/productos/editar-productos/editar-productos.component';
-import { ListarProductosComponent } from './pages/productos/listar-productos/listar-productos.component';
+
 import { CreateUserComponent } from './pages/users/create-user/create-user.component';
 import { LoginComponent } from './pages/users/login/login.component';
-import { VuelosComponent } from './pages/vuelo/vuelos/vuelos.component';
-import { CrearVueloComponent } from './pages/vuelo/crear-vuelo/crear-vuelo.component';
-import { EditarVueloComponent } from './pages/vuelo/editar-vuelo/editar-vuelo.component';
-import { EliminarVueloComponent } from './pages/vuelo/eliminar-vuelo/eliminar-vuelo.component';
+
+
+import { CrearVuelosComponent } from './pages/vuelos/crear-vuelos/crear-vuelos.component';
+import { ListarVuelosComponent } from './pages/vuelos/listar-vuelos/listar-vuelos.component';
+import { EliminarVuelosComponent } from './pages/vuelos/eliminar-vuelos/eliminar-vuelos.component';
+import { EditarVuelosComponent } from './pages/vuelos/editar-vuelos/editar-vuelos.component';
+
+import { CrearPilotosComponent } from './pages/piloto/crear-pilotos/crear-pilotos.component';
+import { ListarPilotosComponent } from './pages/piloto/listar-pilotos/listar-pilotos.component';
+import { EliminarPilotosComponent } from './pages/piloto/eliminar-pilotos/eliminar-pilotos.component';
+import { EditarPilotosComponent } from './pages/piloto/editar-pilotos/editar-pilotos.component';
+
+
+import { CrearAvionesComponent } from './pages/aviones/crear-aviones/crear-aviones.component';
+import { ListarAvionesComponent } from './pages/aviones/listar-aviones/listar-aviones.component';
+import { EditarAvionesComponent } from './pages/aviones/editar-aviones/editar-aviones.component';
+
+
+import { CrearMiembrosComponent } from './pages/miembros/crear-miembros/crear-miembros.component';
+import { ListarMiembrosComponent } from './pages/miembros/listar-miembros/listar-miembros.component';
+import { EditarMiembrosComponent } from './pages/miembros/editar-miembros/editar-miembros.component';
+
+
 
 const routesInicio: Routes = [
   { path: '', component: LoginComponent },
   { path: 'crear-usuario', component: CreateUserComponent },
-  { path: 'listar-productos', component: ListarProductosComponent },
-  { path: 'crear-productos', component: CrearProductosComponent },
-  { path: 'vuelos', component: VuelosComponent },
-  { path: 'crear-vuelo', component: CrearVueloComponent },
-  { path: 'editar-vuelo', component: EditarVueloComponent },
-  { path: 'eliminar-vuelo', component: EliminarVueloComponent },
+  { path: 'crear-vuelos', component: CrearVuelosComponent },
+  { path: 'listar-vuelos', component: ListarVuelosComponent },
+  { path: 'eliminar-vuelos', component: EliminarVuelosComponent },
+  { path: 'editar-vuelos/:id', component: EditarVuelosComponent},
+  { path: 'crear-pilotos', component: CrearPilotosComponent },
+  { path: 'listar-pilotos', component: ListarPilotosComponent },
+  { path: 'eliminar-pilotos', component: EliminarPilotosComponent },
+  { path: 'editar-pilotos/:id', component: EditarPilotosComponent},
+  { path: 'crear-aviones', component: CrearAvionesComponent },
+  { path: 'listar-aviones', component: ListarAvionesComponent },
+  { path: 'editar-aviones/:id', component: EditarAvionesComponent},
+  { path: 'crear-miembros', component: CrearMiembrosComponent },
+  { path: 'listar-miembros', component: ListarMiembrosComponent },
+  { path: 'editar-miembros/:id', component: EditarMiembrosComponent},
 
-  { path: 'editar-producto/:id', component: EditarProductosComponent },
+
+ 
   { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
