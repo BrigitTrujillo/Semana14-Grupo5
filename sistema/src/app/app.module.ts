@@ -11,11 +11,9 @@ import { CreateUserComponent } from './pages/users/create-user/create-user.compo
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { CrearVuelosComponent } from './pages/vuelos/crear-vuelos/crear-vuelos.component';
 import { ListarVuelosComponent } from './pages/vuelos/listar-vuelos/listar-vuelos.component';
-import { EliminarVuelosComponent } from './pages/vuelos/eliminar-vuelos/eliminar-vuelos.component';
 import { EditarVuelosComponent } from './pages/vuelos/editar-vuelos/editar-vuelos.component';
 import { CrearPilotosComponent } from './pages/piloto/crear-pilotos/crear-pilotos.component';
 import { EditarPilotosComponent } from './pages/piloto/editar-pilotos/editar-pilotos.component';
-import { EliminarPilotosComponent } from './pages/piloto/eliminar-pilotos/eliminar-pilotos.component';
 import { ListarPilotosComponent } from './pages/piloto/listar-pilotos/listar-pilotos.component';
 import { CrearAvionesComponent } from './pages/aviones/crear-aviones/crear-aviones.component';
 import { EditarAvionesComponent } from './pages/aviones/editar-aviones/editar-aviones.component';
@@ -33,11 +31,9 @@ import { ListarMiembrosComponent } from './pages/miembros/listar-miembros/listar
     NavbarComponent,
     CrearVuelosComponent,
     ListarVuelosComponent,
-    EliminarVuelosComponent,
     EditarVuelosComponent,
     CrearPilotosComponent,
     EditarPilotosComponent,
-    EliminarPilotosComponent,
     ListarPilotosComponent,
     CrearAvionesComponent,
     EditarAvionesComponent,

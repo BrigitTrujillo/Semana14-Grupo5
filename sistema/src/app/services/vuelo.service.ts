@@ -9,34 +9,9 @@ import 'jspdf-autotable';
   providedIn: 'root'
 })
 export class VueloService {
-  url = 'http://localhost:4000/api/productos/';
+  url = 'http://localhost:4000/api/vuelos/';
 
   constructor(private http: HttpClient) { }
-
-  generatePDF(numero: string, origen: string, destino: string, fecha: string) {
-    const doc = new jsPDF.default();
-
-    // Create the content of the report in table format
-    const tableContent = [
-      ['Numero-Vuelo', 'Origen', 'Destino', 'Fecha'],
-      [numero, origen, destino, fecha]
-    ];
-
-    // Set table style
-    const tableStyles = {
-      fontSize: 12,
-      fontStyle: 'bold',
-      halign: 'center',
-      fillColor: [52, 73, 94],
-      textColor: [255, 255, 255]
-    };
-
-    // Add content to the document PDF
-    doc.text('Ingreso de vuelo', 10, 10);
-  
-
-   
-  }
 
   getVuelos(): Observable<any> {
     return this.http.get(this.url);
@@ -56,5 +31,10 @@ export class VueloService {
 
   actualizarVuelo(id: string, vuelo: Vuelo): Observable<any> {
     return this.http.put(this.url + id, vuelo);
+  }
+
+  generarPDF(): Observable<Blob> {
+    const options = { responseType: 'blob' as 'json' };
+    return this.http.get<Blob>(this.url + 'generar-pdf', options);
   }
 }

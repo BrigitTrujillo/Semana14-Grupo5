@@ -14,11 +14,11 @@
                                 <form [formGroup]="vueloForm" (ngSubmit)="agregarVuelo()">
                                     <div class="form-group">
                                         <label>Num-Vuelo</label>
-                                        <input type="text" formControlName="vuelo"
+                                        <input type="text" formControlName="num_vuelo"
                                             class="form-control" placeholder="Ingresar vuelo">
                                         <div class="text-danger"
-                                            *ngIf="vueloForm.get('numero')?.hasError('required') && 
-                                                    vueloForm.get('numero')?.touched">
+                                            *ngIf="vueloForm.get('num_vuelo')?.hasError('required') && 
+                                                    vueloForm.get('num_vuelo')?.touched">
                                             <span>El numero vuelo <strong>es obligatorio</strong></span>
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@
                                     <div  class="col-sm-12 text-right">
                                         <div class="panel-body buttons-margin">
                                            <button type="submit" [disabled]="vueloForm.invalid"  class="btn btn-w-md btn-success">Guardar</button>&nbsp;&nbsp;
-                                           <button class="btn btn-w-md btn-warning" routerLink="/listar-vuelo">Cancelar</button>
+                                           <button class="btn btn-w-md btn-warning" routerLink="/listar-vuelos">Cancelar</button>
                                         </div>
                                     </div>
                                 </form>

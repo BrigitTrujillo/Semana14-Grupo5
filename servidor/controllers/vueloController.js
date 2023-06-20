@@ -110,14 +110,14 @@ exports.generarPDF = async (req, res) => {
   
       const documentDefinition = {
         content: [
-          { text: 'Vuelos', style: 'header' },
+          { text: 'Reporte de Vuelos', style: 'header' },
           { text: '\n' },
           {
             table: {
               headerRows: 1,
               widths: ['*', 'auto', 100, '*'],
               body: [
-                  [{ text: 'Num Vuelo', bold: true }, { text: 'Origen', bold: true }, { text: 'Destino', bold: true }, { text: 'Hora', bold: true }, { text: 'Fecha', bold: true }, { text: 'Piloto', bold: true }, { text: 'Avion', bold: true }],
+                  [{ text: 'Num Vuelo', bold: true }, { text: 'Origen', bold: true }, { text: 'Destino', bold: true }, { text: 'Fecha', bold: true }],
               ]
             },
           },
@@ -132,7 +132,7 @@ exports.generarPDF = async (req, res) => {
       };
       for (let i = 0; i < vuelos.length; i++) {
           const vuelo = vuelos[i];
-          documentDefinition.content[2].table.body.push([vuelo.num_vuelo, vuelo.origen, vuelo.destino, vuelo.hora, vuelo.fecha, vuelo.piloto, vuelo.avion]);
+          documentDefinition.content[2].table.body.push([vuelo.num_vuelo, vuelo.origen, vuelo.destino, vuelo.fecha]);
       }
   
       const pdfDoc = pdfMake.createPdf(documentDefinition);
@@ -140,7 +140,7 @@ exports.generarPDF = async (req, res) => {
       pdfDoc.getBuffer((buffer) => {
         res.writeHead(200, {
           'Content-Type': 'application/pdf',
-          'Content-Disposition': 'inline; filename=lista_productos.pdf',
+          'Content-Disposition': 'inline; filename=lista_vuelos.pdf',
           'Content-Length': buffer.length,
         });
   

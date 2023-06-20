@@ -22,7 +22,7 @@
                                             
                                         </div>
                                         <div class="panel-body buttons-margin">
-                                        <button class="btn btn-w-md btn-info" (click)="generarPDF()">Generar Reporte</button>
+                                        <button class="btn btn-w-md btn-info" (click)="openPdfTables()">Generar Reporte</button>
                                     </div>
                                     </div>
                                     
@@ -32,7 +32,7 @@
                                     <table *ngIf="listVuelos.length > 0" class="table table-hover table-striped">
                                         <thead>
                                             <tr>
-                                                <th>numero-origen</th>
+                                                <th>Número de vuelo</th>
                                                 <th>Origen</th>
                                                 <th>Destino</th>
                                                 <th>Fecha</th>
@@ -41,7 +41,7 @@
                                         </thead>
                                         <tbody id="datos">
                                             <tr *ngFor="let vuelo of listVuelos">
-                                                <td>{{ vuelo.numero }}</td>
+                                                <td>{{ vuelo.num_vuelo }}</td>
                                                 <td>{{ vuelo.origen }}</td>
                                                 <td>{{ vuelo.destino }}</td>
                                                 <td>{{ vuelo.fecha }}</td>

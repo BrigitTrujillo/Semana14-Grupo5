@@ -38,7 +38,10 @@ export class ListarVuelosComponent {
     );
   }
 
-  generarPDF() {
-    // Generate the PDF logic
+  openPdfTables(): void {
+    this.vueloService.generarPDF().subscribe((pdfBlob: Blob) => {
+      const fileURL = URL.createObjectURL(pdfBlob);
+      window.open(fileURL, '_blank');
+    });
   }
 }
