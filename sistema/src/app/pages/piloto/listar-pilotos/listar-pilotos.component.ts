@@ -5,7 +5,7 @@ import { Piloto } from 'src/app/models/piloto';
 @Component({
   selector: 'app-listar-pilotos',
   templateUrl: './listar-pilotos.component.html',
-  styleUrls: ['./listar-pilotos.component.css']
+  styleUrls: ['./listar-pilotos.component.css'],
 })
 export class ListarPilotosComponent {
   listPilotos: any[] = []; // Assuming listVuelos is an array of vuelos
@@ -30,7 +30,6 @@ export class ListarPilotosComponent {
   eliminarPiloto(id: string) {
     this.pilotoService.deletePiloto(id).subscribe(
       (response: any) => {
-     
         this.loadPilotos();
       },
       (error: any) => {
@@ -38,6 +37,4 @@ export class ListarPilotosComponent {
       }
     );
   }
-
-
 }
