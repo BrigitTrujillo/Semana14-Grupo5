@@ -9,7 +9,7 @@ import 'jspdf-autotable';
   providedIn: 'root'
 })
 export class MiembroService {
-  url = 'http://localhost:4000/api/productos/';
+  url = 'http://localhost:4000/api/miembros/';
 
   constructor(private http: HttpClient) { }
 
