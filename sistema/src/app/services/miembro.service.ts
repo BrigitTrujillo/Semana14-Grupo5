@@ -2,14 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Miembro } from '../models/miembro';
-import * as jsPDF from 'jspdf';
-import 'jspdf-autotable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MiembroService {
-  url = 'http://localhost:4000/api/productos/';
+  url = 'http://localhost:4000/api/miembros/';
 
   constructor(private http: HttpClient) { }
 

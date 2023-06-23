@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import * as jsPDF from 'jspdf';
 import { Avion } from '../models/avion';
-import 'jspdf-autotable';
 
 @Injectable({
   providedIn: 'root'

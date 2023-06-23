@@ -16,7 +16,7 @@ exports.crearVuelo = async (req, res) => {
 
 exports.obtenerVuelos = async (req, res) => {
   try {
-    const vuelos = await VueloModel.find().populate("piloto").populate("avion");
+    const vuelos = await VueloModel.find().populate("piloto").populate("avion").populate("miembro");
     res.json(vuelos);
   } catch (error) {
     console.log(error);
@@ -26,7 +26,7 @@ exports.obtenerVuelos = async (req, res) => {
 
 exports.actualizarVuelo = async (req, res) => {
   try {
-    const { _id, num_vuelo, origen, destino, hora, fecha, piloto, avion } =
+    const { _id, num_vuelo, origen, destino, hora, fecha, piloto, avion, miembro } =
       new VueloModel(req.body);
     let vuels = await VueloModel.findById(req.params.id);
 
@@ -42,6 +42,7 @@ exports.actualizarVuelo = async (req, res) => {
     vuels.fecha = fecha;
     vuels.piloto = piloto;
     vuels.avion = avion;
+    vuels.miembro = miembro;
 
     console.log(vuels);
 
@@ -89,42 +90,62 @@ exports.eliminarVuelo = async (req, res) => {
 
 exports.generarPDF = async (req, res) => {
   try {
-    const vuelos = await VueloModel.find();
+    const vuelos = await VueloModel.find()
+      .populate('piloto', 'nombre')
+      .populate('avion', 'codigo')
+      .populate('miembro', 'nombre');
+    
+    const fechaGeneracion = new Date();
 
     const documentDefinition = {
       content: [
         { text: "Reporte de Vuelos", style: "header" },
         { text: "\n" },
+        { text: `Fecha de generación: ${fechaGeneracion.toLocaleString()}` },
+        { text: "\n" },
         {
           table: {
             headerRows: 1,
-            widths: ["*", "auto", 100, "*"],
+            widths: ["auto", "auto", "*", "*", "auto", "*", 'auto'],
             body: [
               [
-                { text: "Num Vuelo", bold: true },
-                { text: "Origen", bold: true },
-                { text: "Destino", bold: true },
-                { text: "Fecha", bold: true },
+                { text: "Número de vuelo", bold: true, style: "tableCell" },
+                { text: "Origen", bold: true, style: "tableCell" },
+                { text: "Destino", bold: true, style: "tableCell" },
+                { text: "Fecha", bold: true, style: "tableCell" },
+                { text: "Piloto", bold: true, style: "tableCell" },
+                { text: "Vuelo", bold: true, style: "tableCell" },
+                { text: "Miembro", bold: true, style: "tableCell"},
               ],
-            ],
+            ], 
           },
-        },
+          style: "subheader"},
       ],
       styles: {
         header: {
           fontSize: 18,
           bold: true,
           alignment: "center",
+          color: "blue",
+        },
+        subheader: {
+          fillColor: "#E3FCFF", 
+        },
+        tableCell: {
+          fillColor: "#70B8F8", 
         },
       },
     };
     for (let i = 0; i < vuelos.length; i++) {
       const vuelo = vuelos[i];
-      documentDefinition.content[2].table.body.push([
+      documentDefinition.content[4].table.body.push([
         vuelo.num_vuelo,
         vuelo.origen,
         vuelo.destino,
         vuelo.fecha,
+        vuelo.piloto.nombre,
+        vuelo.avion.codigo,
+        vuelo.miembro.nombre
       ]);
     }
 

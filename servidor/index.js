@@ -12,13 +12,12 @@ app.use(cors())
 
 app.use(express.json());
 
-app.use('/api/productos', require('./routes/producto'));
 app.use('/api/login', require('./routes/usuario'));
 app.use('/api/create-user', require('./routes/usuario'));
-app.use('/api/pilotos', require('./routes/piloto'))
-app.use('/api/aviones', require('./routes/avion'))
-app.use('/api/vuelos', require('./routes/vuelo'))
-
+app.use('/api/pilotos', require('./routes/piloto'));
+app.use('/api/aviones', require('./routes/avion'));
+app.use('/api/miembros', require('./routes/miembro'));
+app.use('/api/vuelos', require('./routes/vuelo'));
 
 app.listen(config.port, () => {
     console.log('El servidor por el puerto 4000')

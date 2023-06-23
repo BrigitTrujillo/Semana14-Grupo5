@@ -6,6 +6,7 @@ export class Vuelo {
   fecha: string;
   piloto: string;
   avion: string;
+  miembro: String;
 
   constructor(
     num_vuelo: string,
@@ -13,7 +14,8 @@ export class Vuelo {
     destino: string,
     fecha: string,
     piloto: string,
-    avion: string
+    avion: string,
+    miembro: string
   ) {
     this.num_vuelo = num_vuelo;
     this.origen = origen;
@@ -21,5 +23,6 @@ export class Vuelo {
     this.fecha = fecha;
     this.piloto = piloto;
     this.avion = avion;
+    this.miembro = miembro
   }
 }

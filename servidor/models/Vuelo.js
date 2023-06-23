@@ -27,6 +27,7 @@ const VueloSchema = new Schema({
     ref: "Avion",
     required: true,
   },
+  miembro: { type: Schema.Types.ObjectId, ref: "Miembro", required: true },
   fechaCreacion: {
     type: Date,
     default: Date.now(),

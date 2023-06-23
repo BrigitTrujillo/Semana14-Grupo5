@@ -3,17 +3,20 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Vuelo } from 'src/app/models/vuelo';
 import { VueloService } from 'src/app/services/vuelo.service';
-import Swal from 'sweetalert2';
 import { PilotoService } from 'src/app/services/piloto.service';
 import { AvionService } from 'src/app/services/avion.service';
+import { MiembroService } from 'src/app/services/miembro.service';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-crear-vuelos',
   templateUrl: './crear-vuelos.component.html',
   styleUrls: ['./crear-vuelos.component.css'],
 })
 export class CrearVuelosComponent {
-  listPilotos: any[] = []; // Assuming listVuelos is an array of vuelos
+  listPilotos: any[] = []; 
   listAviones: any[] = [];
+  listMiembros: any[] = [];
   vueloForm: FormGroup;
 
   constructor(
@@ -21,7 +24,8 @@ export class CrearVuelosComponent {
     private router: Router,
     private _vueloService: VueloService,
     private pilotoService: PilotoService,
-    private avionService: AvionService
+    private avionService: AvionService,
+    private miembroService: MiembroService
   ) {
     this.vueloForm = this.formBuilder.group({
       // Define los campos del formulario aquí
@@ -32,12 +36,14 @@ export class CrearVuelosComponent {
       // Agrega más campos según sea necesario
       piloto: ['', Validators.required],
       avion: ['', Validators.required],
+      miembro: ['', Validators.required]
     });
   }
 
   ngOnInit() {
     this.loadPilotos();
     this.loadAviones();
+    this.loadMiembros();
   }
 
   loadPilotos() {
@@ -62,6 +68,17 @@ export class CrearVuelosComponent {
     );
   }
 
+  loadMiembros() {
+    this.miembroService.getMiembros().subscribe(
+      (response: any) => {
+        this.listMiembros = response;
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
+
   agregarVuelo() {
     // Lógica para agregar un vuelo
     const VUELO: Vuelo = {
@@ -71,6 +88,7 @@ export class CrearVuelosComponent {
       fecha: this.vueloForm.get('fecha')?.value,
       piloto: this.vueloForm.get('piloto')?.value,
       avion: this.vueloForm.get('avion')?.value,
+      miembro: this.vueloForm.get('miembro')?.value,
     };
 
     Swal.fire({
