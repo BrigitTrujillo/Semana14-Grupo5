@@ -6,12 +6,12 @@ import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VueloService {
   url = 'http://localhost:4000/api/vuelos/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getVuelos(): Observable<any> {
     return this.http.get(this.url);
@@ -26,7 +26,7 @@ export class VueloService {
   }
 
   viewVuelo(id?: string): Observable<any> {
-    return this.http.get(this.url + id)
+    return this.http.get(this.url + id);
   }
 
   actualizarVuelo(id: string, vuelo: Vuelo): Observable<any> {
